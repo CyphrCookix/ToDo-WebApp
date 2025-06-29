@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="A cute and functional To-Do List application with drag-and-drop functionality">
     <meta name="theme-color" content="#cce4f8">
     <title>To-Do List App | Cute & Functional</title>
@@ -252,37 +252,46 @@
             background-color: #cce4f8; /* Light blue background */
             color: #333333; /* Dark grey text */
             font-family: 'Cute Font', sans-serif; /* Default font */
-            font-size: 22px;
-            /* Removed height: 100vh and display: flex from original body, handled by html/body table display */
+            font-size: clamp(18px, 4vw, 22px); /* Responsive font size */
             margin: 0;
-            padding: 20px; /* Add some padding around the app */
+            padding: 15px; /* Add some padding around the app */
         }
 
         /* Container for the app */
-        #app.container { /* Making the selector more specific */
-            background-color: #eaf4ff; /* Slightly lighter background for the container */
-            padding: 25px 30px;
+        #app.container {
+            background-color: #eaf4ff;
+            padding: clamp(15px, 3vw, 25px);
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            width: 450px; /* Adjusted width */
-            max-width: 90%; /* Ensure responsiveness */
-            margin: auto; /* Center container */
+            width: 90vw;
+            max-width: min(500px, 90vw);
+            min-width: 280px;
+            margin: 2vh auto;
             text-align: center;
+            box-sizing: border-box;
         }
 
         /* Heading */
         h1 {
-            color: #2c3e50; /* Darker blue-grey for heading */
-            font-size: 58px; /* Slightly adjusted size */
-            margin-bottom: 25px;
-            text-align: center; /* Ensure text alignment */
+            color: #2c3e50;
+            font-size: clamp(28px, 7vw, 48px);
+            margin-bottom: clamp(15px, 4vw, 25px);
+            text-align: center;
+            line-height: 1.2;
         }
 
         /* Input Form */
         .form {
             display: flex;
-            gap: 10px; /* Space between input and button */
-            margin-bottom: 20px; /* Space below the form */
+            flex-direction: column;
+            gap: clamp(8px, 1.5vw, 12px);
+            margin-bottom: clamp(15px, 3vw, 25px);
+        }
+        @media (min-width: 400px) {
+            .form {
+                flex-direction: row;
+                align-items: center;
+            }
         }
         input[type="text"] {
             flex-grow: 1; /* Input takes available space */
@@ -300,17 +309,18 @@
 
         /* General Button Styles */
         button {
-            background-color: #333333; /* Dark background */
+            background-color: #333333;
             color: white;
             font-family: 'Cute Font', sans-serif;
-            font-size: 16px;
+            font-size: clamp(14px, 3.5vw, 16px);
             font-weight: 550;
-            padding: 8px 18px;
-            border-radius: 10px; /* Slightly softer radius */
+            padding: clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 18px);
+            border-radius: 10px;
             cursor: pointer;
             border: none;
             transition: background-color 0.3s ease, transform 0.1s ease;
-            white-space: nowrap; /* Prevent text wrapping */
+            white-space: nowrap;
+            min-width: max-content;
         }
         button:hover {
             background-color: #1b1925; /* Darker shade on hover */
@@ -327,14 +337,21 @@
         }
         li {
             background-color: #fff;
-            margin: 10px 0;
-            padding: 10px 15px; /* Adjusted padding */
-            border-radius: 8px; /* Softer radius */
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            margin: clamp(8px, 1.5vw, 12px) 0;
+            padding: clamp(8px, 1.5vw, 12px);
+            border-radius: 8px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: clamp(6px, 1vw, 10px);
             transition: background-color 0.3s ease;
+            align-items: center;
+        }
+        @media (min-width: 350px) {
+            li {
+                flex-wrap: nowrap;
+                padding: clamp(10px, 2vw, 15px);
+            }
         }
 
         /* Styling for Done Tasks */
@@ -359,8 +376,18 @@
 
         .task-buttons {
             display: flex;
-            gap: 8px; /* Space between buttons */
-            flex-shrink: 0; /* Prevent buttons from shrinking */
+            gap: clamp(4px, 1vw, 8px);
+            flex-shrink: 0;
+            margin-left: auto;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        @media (max-width: 350px) {
+            .task-buttons {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 8px;
+            }
         }
 
         /* Specific Button Colors (Optional) */
