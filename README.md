@@ -28,7 +28,7 @@ Preview.png
 
 ## How to Use 
 
-1. Simply visit `[ToDo-WebApp](https://cyphrcookix.github.io/ToDo-WebApp/)` in any modern web browser
+1. Simply visit https://cyphrcookix.github.io/ToDo-WebApp in any modern web browser
 2. Type your task in the input field and press Enter or click "Add Task"
 3. Click "Done" to mark a task as completed
 4. Drag the handle (⋮⋮) to reorder tasks
