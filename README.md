@@ -2,7 +2,8 @@
 
 A delightful and functional To-Do List application with drag-and-drop functionality, cute styling, and persistent local storage.
 
-Preview.png
+![Preview](https://github.com/user-attachments/assets/096ac527-5712-4a7c-9993-5c1066716c69)
+
 
 ## Features 
 
